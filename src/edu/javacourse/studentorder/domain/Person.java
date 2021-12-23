@@ -12,7 +12,7 @@ public class Person
 
     public String getSurName() {
         return surName;
-    }
+    } //liashca
 
     public void setSurName(String surName) {
         this.surName = surName;
