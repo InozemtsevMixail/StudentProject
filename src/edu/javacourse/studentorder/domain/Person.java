@@ -20,7 +20,7 @@ public class Person
 
     public String getGivenName() {
         return givenName;
-    }
+    } //
 
     public void setGivenName(String givenName) {
         this.givenName = givenName;
