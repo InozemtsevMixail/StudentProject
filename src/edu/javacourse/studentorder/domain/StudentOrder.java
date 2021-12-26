@@ -1,6 +1,6 @@
 package edu.javacourse.studentorder.domain;
 
-import edu.javacourse.studentorder.domain.other.Adult;
+import edu.javacourse.studentorder.domain.Adult;
 
 public class StudentOrder
 {

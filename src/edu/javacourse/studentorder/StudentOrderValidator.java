@@ -2,16 +2,31 @@ package edu.javacourse.studentorder;
 
 import edu.javacourse.studentorder.domain.*;
 import edu.javacourse.studentorder.mail.MailSander;
-import edu.javacourse.studentorder.validator.ChildrenWalidator;
+import edu.javacourse.studentorder.validator.ChildrenValidator;
 import edu.javacourse.studentorder.validator.CityRegisterValidator;
 import edu.javacourse.studentorder.validator.StudentValidator;
 import edu.javacourse.studentorder.validator.WeddingValidator;
 
-public class StudentOrderValidator {
+public class StudentOrderValidator { //перечислили все валидаторы в сиде полей
+    private CityRegisterValidator cityRegisterVal;
+    private WeddingValidator weddingVal;
+    private ChildrenValidator childrenVal;
+    private StudentValidator studentVal;
+    private MailSander mailSander;
 
-    public static void main(String[] args) {checkAll();}
+    public  StudentOrderValidator() { //конструктор
+        cityRegisterVal = new CityRegisterValidator();
+        weddingVal = new WeddingValidator();
+        childrenVal = new ChildrenValidator();
+        studentVal = new StudentValidator();
+        mailSander = new MailSander();
+    }
 
-    static void checkAll() {
+    public static void main(String[] args) { //static - значит метод принадлежит не конкретному обьекту, а всему классу
+        StudentOrderValidator sov = new StudentOrderValidator(); // создали обьект в который зашли через конструктор, внутри которого все присваивали
+        sov.checkAll();}
+
+    public void checkAll() {
 
         while (true) {
             StudentOrder so = readStudentOrder();
@@ -34,30 +49,25 @@ public class StudentOrderValidator {
         }
     }
 
-    static StudentOrder readStudentOrder() {
+    public StudentOrder readStudentOrder() {
+        SaveStudentOrder.buildStudentOrder();
         StudentOrder so = new StudentOrder();
         return so;
     }
 
-    static AnswerCityRegister checkCityRegister(StudentOrder so) {
-        CityRegisterValidator crv1 = new CityRegisterValidator();
-        crv1.hostname = "Host1";
-        AnswerCityRegister ans1 = crv1.checkCityRegister(so);
-        return ans1;
+    public AnswerCityRegister checkCityRegister(StudentOrder so) {
+        return cityRegisterVal.checkCityRegister(so);
     }
-    static AnswerWedding checkWedding(StudentOrder so) {
-        WeddingValidator wd = new WeddingValidator();
-        return wd.checkWedding(so);
+    public AnswerWedding checkWedding(StudentOrder so) {
+        return weddingVal.checkWedding(so);
     }
-    static AnswerChildren checkChildren(StudentOrder so) {
-        ChildrenWalidator cv = new ChildrenWalidator();
-        return cv.checkChildren(so);
+    public AnswerChildren checkChildren(StudentOrder so) {
+        return childrenVal.checkChildren(so);
     }
-    static AnswerStudent checkStudent(StudentOrder so) {
-        return new StudentValidator().checkStudent(so);
+    public AnswerStudent checkStudent(StudentOrder so) {
+        return studentVal.checkStudent(so);
     }
-
-    static void sendMail(StudentOrder so) {
-        new MailSander().sendMail(so);
+    public void sendMail(StudentOrder so) {
+        mailSander.sendMail(so);
     };
 }

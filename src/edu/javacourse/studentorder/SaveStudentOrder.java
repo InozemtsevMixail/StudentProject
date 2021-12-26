@@ -1,14 +1,13 @@
 package edu.javacourse.studentorder;
 
-import edu.javacourse.studentorder.domain.other.Adult;
+import edu.javacourse.studentorder.domain.Adult;
 import edu.javacourse.studentorder.domain.StudentOrder;
 
 import java.sql.SQLOutput;
 
-public class SaveStudentOrder
+public class SaveStudentOrder //класс
 {
-    public static void main(String[] args) {
-
+    public static void main(String[] args) {  //метод
         buildStudentOrder();
 
 //        StudentOrder so = new StudentOrder();
@@ -22,16 +21,20 @@ public class SaveStudentOrder
 
         return ansver;
     }
-    static StudentOrder buildStudentOrder() {
-        StudentOrder so = new StudentOrder();
-        Adult husband = new Adult();
-        husband.setGivenName("Захар");
-        husband.setSurName("Лупов");
-        husband.setPassportNumber("123456");
-        so.setHusband(husband);
+    public static StudentOrder buildStudentOrder() {
+        StudentOrder so = new StudentOrder(); // new - создай обект, совпадает с именем класса
 
-        String ans = husband.getPersonString();
-        System.out.println(ans);
+// создали обьект класса Adult и вызвали его конструктор, в данном случае без исполнения
+        Adult husband = new Adult();
+
+        Person p = new Person();
+//        husband.setGivenName("Захар");
+//        husband.setSurName("Лупов");
+//        husband.setPassportNumber("123456");
+//        so.setHusband(husband);
+
+ //       String ans = husband.getPersonString();
+   //     System.out.println(ans);
 
         return so;
     }

@@ -1,10 +1,8 @@
-package edu.javacourse.studentorder.domain.other;
-
-import edu.javacourse.studentorder.domain.Person;
+package edu.javacourse.studentorder.domain;
 
 import java.time.LocalDate;
 
-public class Adult extends Person
+public class Adult extends Person //конструктор будет созда по умолчанию, если ничего не выводится
 {
     private String passportSeriea;
     private String passportNumber;
@@ -13,9 +11,13 @@ public class Adult extends Person
     private String university;
     private String studentId;
 
-//    public String getPersonString() {
-//        return  surName + " " + givenName + " " + passportNumber;
-//    }
+    public Adult() {
+        System.out.println("Adult is created");
+    }
+
+    public String getPersonString() {
+        return  surName + " " + givenName + " " + passportNumber;
+    }
 
     public String getPassportSeriea() {
         return passportSeriea;

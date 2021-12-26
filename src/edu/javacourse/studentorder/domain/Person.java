@@ -2,13 +2,17 @@ package edu.javacourse.studentorder.domain;
 
 import java.time.LocalDate;
 
-public class Person
+public abstract class Person //абстракт это подсказка что обект Person создавать не надо
 {
     protected String surName;
     protected String givenName;
     private String patronymic;
     private LocalDate dateOfBirth;
     private Address address;
+
+    public Person () {
+        System.out.println("Person is created");
+    }
 
     public String getPersonString() {
         return surName + " " + givenName;
